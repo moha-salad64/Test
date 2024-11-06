@@ -4,6 +4,7 @@ const { readTasksfromFile, writeTasktoFile } = require("../utils/fileHandler");
 const { copyFileSync } = require('fs');
 const path = require('path');
 
+
 // get tasks from file
 exports.getTasks = (req , res) =>{
     const tasks = readTasksfromFile();
@@ -11,7 +12,7 @@ exports.getTasks = (req , res) =>{
     res.end(JSON.stringify(tasks));
 }
 
-//create task list
+// createtask list
 // exports.createTask = (req , res) =>{
 //     const form = new IncomingForm();
 //     form.parse(req , (err , fields , files) => {
@@ -95,5 +96,22 @@ exports.getTasks = (req , res) =>{
 // }
 
 // exports.deleteTask = (req , res) => {
-//     res.end(JSON.stringify({ message: 'Task deleted successfully'}));
+//     const tasks = readTasksfromFile();
+//     const taskId = parseInt(req.url.split('/').pop());
+//     const taskIndex = tasks.findIndex(task => task.id === taskId);
+
+//     if (taskIndex === -1) {
+//         res.writeHead(404, { 'content-type': 'application/json'});
+//         res.end(JSON.stringify({
+//             message: 'Task not found'
+//         }))
+//         return;
+//     }
+
+//     const updatedTasks = tasks.filter(task => task.id !== taskId);
+//     writeTasktoFile(updatedTasks);
+//     res.writeHead(200, { 'content-type': 'application/json' });
+//     res.end(JSON.stringify({
+//         message: 'Task successfully deleted'
+//     }));
 // }
